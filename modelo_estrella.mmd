@@ -1,0 +1,32 @@
+erDiagram
+    DIM_CLIENTE ||--o{ FACT_VENTAS : clasifica
+    DIM_PRODUCTO ||--o{ FACT_VENTAS : identifica
+    DIM_TIEMPO ||--o{ FACT_VENTAS : fecha
+    DIM_CLIENTE {
+        int id_cliente_sk PK
+        string cliente_nombre
+        string cliente_ciudad
+    }
+    DIM_PRODUCTO {
+        int id_producto_sk PK
+        string producto_nombre
+        string categoria_prod
+        decimal precio_unitario
+    }
+    DIM_TIEMPO {
+        int id_tiempo_sk PK
+        date fecha_completa
+        int anio
+        int mes
+        int dia
+        string dia_semana
+        boolean es_fin_semana
+    }
+    FACT_VENTAS {
+        int id_transaccion PK
+        int id_cliente_sk FK
+        int id_producto_sk FK
+        int id_tiempo_sk FK
+        int cantidad
+        decimal monto_total
+    }
